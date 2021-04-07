@@ -1,0 +1,30 @@
+
+
+<div class = "container">
+  <div class = "row">
+    <%@serie_info.keys.each do |serie|%>
+      <div class= "col-6">
+      <% if serie== "Breaking Bad"%>
+        <div class="card card_bad card_bad_color" style="width: 18rem;">
+          <img class="card-img-top" src="/logos/breaking_bad.ico" alt="Card image cap">
+      <% elsif serie== "Better Call Saul" %>
+        <div class="card card_bad card_saul_color" style="width: 18rem";>
+          <img class="card-img-top" src="/logos/better_call_saul.png" alt="Card image cap">
+      <% end %>
+          <div class="card-body">
+            <h5 class="card-title title">Seasons</h5>
+            <table class="table table-light table-hover">
+              <% @serie_info[serie].keys.sort.each do |season|%>
+                <tr>
+                  <td><%= link_to "Season #{season}", episodes_path(serie, season) %></td>
+                  <td><%= @serie_info[serie][season]%> Episodes</td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+

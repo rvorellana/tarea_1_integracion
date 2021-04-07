@@ -1,0 +1,29 @@
+
+<div class = "container">
+  <div class = "row">
+      <div class= "col-3">
+        <div class="card card_bad card_bad_color" style="width: 18rem;">
+          <%= image_tag(@character_info["img"], :alt => "rss feed") %>
+          <div class="card-body">
+          <h1 class="card-title title"> <%= @character%></h1>
+            <table class="table table-light table-hover">
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class= "col-9">
+          <div class="card card_bad card_bad_color" style="width: 100%;">
+          <div class="card-body">
+          <h1 class="card-title title">Quotes:</h1>
+            <%@quotes.each do |quote|%>
+              <h3 class="card-title title top_quote">“<%= quote["quote"]%>”</h3>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    </div>
+  </div>
+</div>

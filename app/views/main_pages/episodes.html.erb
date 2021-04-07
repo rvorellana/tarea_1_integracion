@@ -1,0 +1,28 @@
+
+
+<div class = "container">
+  <div class = "row">
+      <div class= "col-6">
+      <% if @serie== "Breaking Bad"%>
+        <div class="card card_bad card_bad_color" style="width: 18rem;">
+          <%= image_tag("/logos/breaking_bad.ico", :alt => "rss feed") %>
+      <% elsif @serie== "Better Call Saul" %>
+        <div class="card card_bad card_saul_color" style="width: 18rem";>
+          <img class="card-img-top" src="/logos/better_call_saul.png" alt="Card image cap">
+      <% end %>
+          <div class="card-body">
+          <h1 class="card-title title">Season <%= @season%></h1>
+            <h5 class="card-title title">Episodes</h5>
+            <table class="table table-light table-hover">
+              <% @season_info.keys.sort.each do |episode|%>
+                <tr>
+                  <td><%= episode%></td>
+                  <td><%= link_to @season_info[episode][:title], episode_path(@season_info[episode][:episode_id]) %></td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
