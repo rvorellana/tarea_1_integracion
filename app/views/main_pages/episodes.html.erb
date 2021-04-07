@@ -4,15 +4,15 @@
   <div class = "row">
       <div class= "col-6">
       <% if @serie== "Breaking Bad"%>
-        <div class="card card_bad card_bad_color" style="width: 18rem;">
+        <div class="card card_bad card_bad_color" style="width: 20rem;">
           <%= image_tag("/Logos/breaking_bad.ico", :alt => "rss feed") %>
       <% elsif @serie== "Better Call Saul" %>
-        <div class="card card_bad card_saul_color" style="width: 18rem";>
+        <div class="card card_bad card_saul_color" style="width: 20rem";>
           <img class="card-img-top" src="/Logos/better_call_saul.png" alt="Card image cap">
       <% end %>
           <div class="card-body">
           <h1 class="card-title title">Season <%= @season%></h1>
-            <h5 class="card-title title">Episodes</h5>
+            <h5 class="card-title title top_quote">Episodes</h5>
             <table class="table table-light table-hover">
               <% @season_info.keys.sort.each do |episode|%>
                 <tr>

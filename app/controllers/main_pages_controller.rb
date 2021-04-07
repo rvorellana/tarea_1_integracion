@@ -76,4 +76,17 @@ class MainPagesController < ApplicationController
     @quotes = JSON.parse(response.to_str)
   end
 
+  def search_character
+    @name = params[:search]
+    response = RestClient.get("https://tarea-1-breaking-bad.herokuapp.com/api/characters?name=#{@name}")
+    response = JSON.parse(response.to_str)
+    @characters_info = []
+    i=1
+    while(not response.empty?)
+      @characters_info.concat(response)
+      response = RestClient.get("https://tarea-1-breaking-bad.herokuapp.com/api/characters?name=#{@name}&limit=10&offset=#{i*10}")
+      response = JSON.parse(response.to_str)
+      i+=1
+    end
+  end
 end

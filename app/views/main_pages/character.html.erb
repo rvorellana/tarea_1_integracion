@@ -1,13 +1,58 @@
 
 <div class = "container">
-  <div class = "row">
+  <div class = "row justify-content-center">
       <div class= "col-3">
-        <div class="card card_bad card_bad_color" style="width: 18rem;">
+        <div class="card card_bad card_bad_color" style="width: 20rem;">
           <%= image_tag(@character_info["img"], :alt => "rss feed") %>
           <div class="card-body">
-          <h1 class="card-title title"> <%= @character%></h1>
+            <h1 class="card-title title"> <%= @character%></h1>
+            <hr class="card-title title">
+            <h4 class="card-title title"> Nickname: <%=@character_info["nickname"]%> </h4>
+            <hr class="card-title title">
+            <h4 class="card-title title"> Status: <%=@character_info["status"]%> </h4>
+            <hr class="card-title title">
+            <h4 class="card-title title"> Portrayed: <%=@character_info["portrayed"]%> </h4>
+            <hr class="card-title title">
+            <h4 class="card-title title"> Occupations: </h4>
             <table class="table table-light table-hover">
+            <% if @character_info["occupation"].empty?%>
+              <h5 class="card-title title"> No appearances</h5>
+            <% else %>
+              <% @character_info["occupation"].each do |occupation|%>
+                <tr>
+                  <td><%= occupation%></td>
+                </tr>
+              <% end %>
             </table>
+            <% end %>
+            <hr class="card-title title">
+            <h4 class="card-title title"> Breaking Bad season appearances: </h4>
+            <% if @character_info["appearance"].empty?%>
+              <h5 class="card-title title"> None</h5>
+            <% else %>
+              <h5 class="card-title title"> No appearances</h5>
+              <table class="table table-light table-hover">
+                <% @character_info["appearance"].each do |appearance|%>
+                  <tr>
+                    <td><%= link_to "Season #{appearance}", episodes_path("Breaking Bad", appearance) %></td>
+                  </tr>
+                  <% end %>
+              </table>
+            <% end %>
+            <hr class="card-title title">
+            <h4 class="card-title title"> Better Call Saul season appearances: </h4>
+            <% if @character_info["better_call_saul_appearance"].empty?%>
+              <h5 class="card-title title"> No appearances</h5>
+            <% else %>
+            <table class="table table-light table-hover">
+              <% @character_info["better_call_saul_appearance"].each do |appearance|%>
+                <tr>
+                  <td><%= link_to "Season #{appearance}", episodes_path("Better Call Saul", appearance) %></td>
+                </tr>
+              <% end %>
+            </table>
+            <% end %>
+            <hr class="card-title title">
           </div>
         </div>
       </div>
@@ -15,9 +60,15 @@
           <div class="card card_bad card_bad_color" style="width: 100%;">
           <div class="card-body">
           <h1 class="card-title title">Quotes:</h1>
+          <% if @quotes.empty? %>
+          <h5 class="card-title title">No quotes</h5>
+          <% else %>
             <%@quotes.each do |quote|%>
               <h3 class="card-title title top_quote">“<%= quote["quote"]%>”</h3>
+              <hr class="card-title title">
+
             <% end %>
+          <% end%>
           </div>
         </div>
       </div>

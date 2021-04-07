@@ -4,7 +4,7 @@
 <div class = "container">
   <div class = "row">
       <div class= "col-3">
-        <div class="card card_bad card_bad_color" style="width: 18rem;">
+        <div class="card card_bad card_bad_color" style="width: 20rem;">
       <% if @serie== "Breaking Bad"%>
           <%= image_tag("/Logos/breaking_bad.ico", :alt => "rss feed") %>
       <% elsif @serie== "Better Call Saul" %>
@@ -12,7 +12,7 @@
       <% end %>
           <div class="card-body">
           <h1 class="card-title title">Season <%= @season%></h1>
-            <h5 class="card-title title">Episodes</h5>
+            <h5 class="card-title title top_quote">Episodes</h5>
             <table class="table table-light table-hover">
               <% @season_info.keys.sort.each do |episode|%>
                 <tr>
@@ -29,13 +29,13 @@
         </div>
       </div>
       <div class= "col-3">
-<div class="card card_bad card_bad_color" style="width: 30rem;">
+        <div class="card card_bad card_bad_color" style="width: 20rem;">
+          <%= image_tag("/Logos/bb.png", :alt => "rss feed") %>
           <div class="card-body">
-          <h1 class="card-title title">Episode:</h1>
-          <h2 class="card-title title"><%= @episode_info["title"] %></h2>
-          <h3 class="card-title title">Episode N°: <%= @episode_info["episode"]%></h3>
-          <h3 class="card-title title">Aired: <%= Date.parse(@episode_info["air_date"])%></h3>
-          <h4 class="card-title title top_card">Characters</h4>
+          <h1 class="card-title title" style = "text-align: center;"><%= @episode_info["title"] %></h1>
+          <h5 class="card-title title top_quote">Episode N°: <%= @episode_info["episode"]%></h5>
+          <h5 class="card-title title">Aired: <%= Date.parse(@episode_info["air_date"])%></h5>
+          <h2 class="card-title title">Characters</h2>
             <table class="table table-light table-hover">
               <% @episode_info["characters"].each do |character|%>
                 <% character_name = character.tr('.', '')%>
@@ -49,7 +49,6 @@
       </div>
     </div>
     <div class= "col-0 col-md-6">
-    
     </div>
   </div>
 </div>

@@ -67,3 +67,16 @@ h2 {
 .white_text {
   color: #FFFFFF;
 }
+
+.char_card {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.home_tag {
+  font-size: 1.3rem;
+}
+
+.btn_top{
+  margin-top: -1rem;
+}
