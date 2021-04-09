@@ -30,8 +30,7 @@
               <h5 class="card-title white_text"><%= character["name"]%></h5>
               <hr class="card-title title">
               <p class="card-tex white_text">AKA: <%= character["nickname"]%></p>
-              <% character_name = character["name"].tr('.', '')%>
-              <a href=<%= character_path(character_name)%> class="btn btn-light">See character</a>
+              <%= link_to "See character", character_path(character["name"]), class: "btn btn-light" %>
             </div>
           </div>
         </div>

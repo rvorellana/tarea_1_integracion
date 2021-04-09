@@ -38,9 +38,8 @@
           <h2 class="card-title title">Characters</h2>
             <table class="table table-light table-hover">
               <% @episode_info["characters"].each do |character|%>
-                <% character_name = character.tr('.', '')%>
                 <tr>
-                  <td><%= link_to character_name, character_path(character_name)%></td>
+                  <td> <%= link_to character, character_path(character)%></td>
                 </tr>
               <% end %>
             </table>
